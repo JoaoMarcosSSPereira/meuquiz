@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Desafio do Conhecimento{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/dist/phosphor.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>{% block header_title %}Desafio do Conhecimento{% endblock %}</h1>
+        </header>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="flash-messages">
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer>
+            <p>Criado por Gemini (Google AI) &copy; 2024</p>
+            <div class="footer-links">
+                <a href="https://phosphoricons.com/" target="_blank"><i class="ph ph-info"></i> Sobre os Ícones</a>
+                </div>
+        </footer>
+    </div>
+</body>
+</html>
